@@ -30,8 +30,8 @@ function Layout(){
                     <li><StyledLink to="/">홈페이지</StyledLink></li>
                     <li><StyledLink to="/">메뉴1</StyledLink></li>
                     <li><StyledLink to="/">메뉴2</StyledLink></li>
-                    <li><StyledLink to="/">메뉴3</StyledLink></li>
-                    <li><StyledLink to="/">메뉴4</StyledLink></li>
+                    <li><StyledLink to="/login">로그인</StyledLink></li>
+                    <li><StyledLink to="/joinsForm">회원가입</StyledLink></li>
                 </ul>
             </nav>
             <Outlet></Outlet>
