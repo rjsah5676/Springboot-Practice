@@ -1,18 +1,24 @@
-import {useState,useEffect} from 'react';
+import {useState,useEffect, useRef} from 'react';
 import axios from 'axios';
 
 function JoinsEdit() {
 
     let [JoinsForm,setJoinsForm] = useState({});
+
+    const mounted = useRef(false);
     useEffect(()=> {
-        axios.post('http://localhost:9988/joins/selectUser',{
-            id:sessionStorage.getItem("id")
-        })
-        .then(res => {
-            setJoinsForm(res.data);
-        })
-        .catch(err => console.log(err));
-    },[])
+        if(!mounted.current) {
+            mounted.current=true;
+        }else {
+            axios.post('http://localhost:9988/joins/selectUser',{
+                id:sessionStorage.getItem("id")
+            })
+            .then(res => {
+                setJoinsForm(res.data);
+            })
+            .catch(err => console.log(err));
+        }
+    },[]);
     
     function setFormData(e){
         let name = e.target.name;
@@ -46,11 +52,11 @@ function JoinsEdit() {
     return(<div>
         <form onSubmit={formChk}>
             <label>id</label>
-            <input type="text" style={{backgroundColor:'red',color:'blue'}} name="userid" value={JoinsForm.userid} onChange={setFormData}/><br/>
+            <input type="text" style={{backgroundColor:'red',color:'blue'}} name="userid" readOnly value={JoinsForm.userid} onChange={setFormData}/><br/>
             <label>pw</label>
             <input type="text" style={{backgroundColor:'orange',color:'yellow'}} name="userpw" value={JoinsForm.userpw} onChange={setFormData}/><br/>
             <label>name</label>
-            <input type="text" style={{backgroundColor:'yellow',color:'green'}} name="username" value={JoinsForm.username} onChange={setFormData}/><br/>
+            <input type="text" style={{backgroundColor:'yellow',color:'green'}} name="username" readOnly value={JoinsForm.username} onChange={setFormData}/><br/>
             <label>tel</label>
             <input type="text" style={{backgroundColor:'green',color:'blue'}} name="tel" value={JoinsForm.tel} onChange={setFormData}/><br/>
             <label>email</label>
