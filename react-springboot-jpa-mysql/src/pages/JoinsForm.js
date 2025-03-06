@@ -25,7 +25,7 @@ function JoinsForm() {
         else if(JoinsForm.tel===''||JoinsForm.tel===undefined) {alert("tel 입력"); x=1;}
         else if(JoinsForm.email===''||JoinsForm.email===undefined) {alert("email 입력"); x=1;}
         if(x===1) return false;
-        axios.post('http://localhost:9988/joins/formOk',JoinsForm)
+        axios.post('http://192.168.1.146:9988/joins/formOk',JoinsForm)
         .then(res => {
             if(res.data==='ok'){
                 window.location.href='/login';

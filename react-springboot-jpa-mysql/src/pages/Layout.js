@@ -22,14 +22,14 @@ function Layout(){
     }
     return(
         <div>
-            <div className="Logo"><a href="/">한국 ICT</a></div>
+            <div className="Logo"><a href="/">American ICT</a></div>
             <nav className="Menu">
                 <ul>
-                    <li><StyledLink to="/">홈페이지</StyledLink></li>
-                    <li><StyledLink to="/">메뉴1</StyledLink></li>
-                    <li><StyledLink to="/">메뉴2</StyledLink></li>
-                    <li>{sessionStorage.getItem("loginStatus") !== "Y" ? <StyledLink to="/login">로그인</StyledLink> : <StyledLink to="/" onClick={logout}>로그아웃</StyledLink>}</li>
-                    <li>{sessionStorage.getItem("loginStatus") !== "Y" ? <StyledLink to="/joinsForm">회원가입</StyledLink> : <StyledLink to="/joinsEdit">회원정보 수정</StyledLink>}</li>
+                    <li><StyledLink to="/">Home</StyledLink></li>
+                    <li><StyledLink to="/board">Gesipan</StyledLink></li>
+                    <li><StyledLink to="/">Menu</StyledLink></li>
+                    <li>{sessionStorage.getItem("loginStatus") !== "Y" ? <StyledLink to="/login">Login</StyledLink> : <StyledLink to="/" onClick={logout}>Logout</StyledLink>}</li>
+                    <li>{sessionStorage.getItem("loginStatus") !== "Y" ? <StyledLink to="/joinsForm">Signup</StyledLink> : <StyledLink to="/joinsEdit">Edit</StyledLink>}</li>
                 </ul>
             </nav>
             <Outlet></Outlet>

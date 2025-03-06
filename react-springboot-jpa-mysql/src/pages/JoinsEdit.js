@@ -10,7 +10,7 @@ function JoinsEdit() {
         if(!mounted.current) {
             mounted.current=true;
         }else {
-            axios.post('http://localhost:9988/joins/selectUser',{
+            axios.post('http://192.168.1.146:9988/joins/selectUser',{
                 id:sessionStorage.getItem("id")
             })
             .then(res => {
@@ -40,13 +40,13 @@ function JoinsEdit() {
         else if(JoinsForm.tel===''||JoinsForm.tel===undefined) {alert("tel 입력"); x=1;}
         else if(JoinsForm.email===''||JoinsForm.email===undefined) {alert("email 입력"); x=1;}
         if(x===1) return false;
-        axios.post('http://localhost:9988/joins/EditOk',JoinsForm)
+        axios.post('http://192.168.1.146:9988/joins/EditOk',JoinsForm)
         .then(res => {
             if(res.data==='ok'){
                 window.location.href='/';
             }
         })
-        .catch(e => console.log(e));
+        .catch(e => {alert("비밀번호가 다릅니다.")});
     }
 
     return(<div>

@@ -10,6 +10,16 @@ ul, li{
     line-height: 100px;
 }
 
+.Logo:hover{
+    animation: rotate_image 0.3s linear infinite;
+    transform-origin: 50% 50%;
+}
+
+@keyframes rotate_image{
+	100% {
+    	transform: rotate(360deg);
+    }
+}
 .Logo a {
     text-decoration: none;
     color:black;
@@ -32,4 +42,8 @@ ul, li{
     font-size:1.5em;
     background-color: navy;
     color:aliceblue;
+}
+.Menu li:hover {
+    scale: 110;
+    transition:all 5s;
 }

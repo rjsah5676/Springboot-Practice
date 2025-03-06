@@ -1,0 +1,11 @@
+.boards {
+    display:flex;
+    width: 60%;
+    margin:auto;
+    border: 1px solid gray;
+    padding: 10px;
+}
+
+.boards > li {
+    width:20%;
+}

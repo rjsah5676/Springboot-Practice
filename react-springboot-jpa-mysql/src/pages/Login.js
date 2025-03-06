@@ -5,12 +5,12 @@ import axios from 'axios';
 function Login() {
 
   const [userid, setUserId] = useState('1');
-  const [userpw, setUserPw] = useState('3');
+  const [userpw, setUserPw] = useState('3ddd4');
   function doLogin(e){
     e.preventDefault();
     if(userid==='') {alert("아이디를 입력하세요"); return false;} 
     else if(userpw==='') {alert("비밀번호를 입력하세요"); return false;}
-    axios.post('http://localhost:9988/joins/loginOk',{
+    axios.post('http://192.168.1.146:9988/joins/loginOk',{
       userid:userid,
       userpw:userpw
     })
@@ -42,14 +42,14 @@ function Login() {
         <div className="left">
           <form onSubmit={doLogin}>
           <ul>
-            <li><h2>로그인</h2></li>
+            <li><h2>Login</h2></li>
             <li><input type="text" onChange={onChangeId} value={userid} placeholder='아이디(5~15자리까지 영어, 숫자만 가능)' name="userid" id="userid"/></li>
             <li><input type="password" onChange={onChangePw} value={userpw} placeholder='비밀번호입력' name="userpw" id="userpw"/></li>
             <li><input type="submit" value="login"/></li>
           </ul>
           <ul id="two">
-            <li><button>회원가입</button></li> 
-            <li><span>아이디/비밀번호 찾기</span></li>
+            <li><button>Sign up</button></li> 
+            <li><span>find id/pw</span></li>
           </ul>
           </form>
         </div>

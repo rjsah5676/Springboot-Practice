@@ -16,9 +16,7 @@ public class JoinsController {
 
     @PostMapping("/formOk")
     public ResponseEntity<String> formOk(@RequestBody joins_entity je){
-        System.out.println(je);
         joins_entity je2 = service.createJoins(je);
-        System.out.println(je2);
         if(je2 != null && je2.getId()>0) {
             return ResponseEntity.ok("ok");
         } else {
@@ -28,14 +26,24 @@ public class JoinsController {
 
     @PostMapping("/loginOk")
     public joins_entity loginOk(@RequestBody joins_entity je){
-        System.out.println(je);
-        joins_entity je2 = service.loginChk(je);
-        System.out.println(je2);
-        return je2;
+        return service.loginChk(je);
     }
 
     @PostMapping("selectUser")
     public joins_entity selectUser(@RequestBody joins_entity je) {
         return service.selectUser(je);
+    }
+
+    @PostMapping("/EditOk")
+    public ResponseEntity<String> EditOk(@RequestBody joins_entity je) {
+        joins_entity je2 = null;
+        if(service.selectUser(je).getUserpw().equals(je.getUserpw())) {
+            je2 = service.createJoins(je);
+        }
+        if(je2 != null && je2.getId()>0) {
+            return ResponseEntity.ok("ok");
+        } else {
+            return ResponseEntity.badRequest().body("failed");
+        }
     }
 }
